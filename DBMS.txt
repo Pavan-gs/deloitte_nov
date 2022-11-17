@@ -1,0 +1,174 @@
+OLTP    ---> Databases
+OLAP   ---> Data warehouse
+NOSQL --> Unstructured
+
+Flat files
+------------
+Data Redundancy
+Breach of security
+Unstructured
+Linear Search
+Non concurrent operations
+CRUD operations takes time
+
+OLTP
+-------
+Databases
+--------------
+Hierarchical
+Networking
+RDBMS
+
+Pre-defined structure
+Concurrent operations
+Data redundancy is avoided
+
+ACID properties
+----------------------
+Atomicity 
+Consistency
+Isolation
+Durability
+
+DB --> Collection of  files & programs, programs allows the user to access files (CRUD operations)
+
+Users of DB --> DBA, Designers, Developers, End users
+
+RDBMS --> Oracle sql, mysql, DB2, Postgre, sql server, Maria db
+
+Data Model --> Designing the functionality & structure of the data
+
+ER model --> Pictorial representation of the data model
+
+Cardinality --> Degree of relationship
+
+Schema --> Description of the db
+
+Keys
+------
+Primary key --> Unique, Not null
+Candidate key --> Combination of more than one key to identify unique records
+Foreign key(Referential integrity) --> Referring to primary key of the parent table
+Alternate key --> All the other keys that is not primary key 
+
+Constraints
+----------------
+Key constraint
+Not null
+Unique
+Check
+Default
+
+Stored procedures --> Tsql, pl/sql
+
+ER model
+--------------
+
+Entity Relationship Models : Entity, Cardinality (Degree of relationship), Shapes 
+
+12. Shapes : 
+
+	Rectangle : Entity/Table
+
+	Ellipses : Attributes
+
+	Diamonds : Relationship
+
+	Lines : Link b/w Attributes, Entities & Relationships
+
+                Double Ellipses : Multi Valued Attributes
+
+	Dashed Ellipses : Derived Attributes
+
+	Double Lines : Total Participation
+
+	Dashed Lines : Without Primary key
+
+	Solid Line : Stronger Entity
+
+	Double Rectangles : Weak Entity
+
+	 Single Line : Partial Participation
+
+Cardinality --> 1 to 1, 1 to M, M to 1, M to M
+
+# Make a ER diagram having tables as follows,
+
+1. Person : Driver_ID, Name, Address
+
+2. Car : License, Year, Model
+
+3. Accident : Report num, Date, Location
+
+4. Participated : Driver ID, License, Report num, Damage fine
+
+# Normalization
+----------------------
+
+Decomposing larger, complex tables into simpler and smaller tables
+
+1 NF ---> Make sure all the variables are atomic
+
+2 NF --> Table should be in 1 NF & No partial dependency between non-key attributes [Non key attribute should not depend only on one composite key)
+
+
+DB OBJECTS   --> Tables, Indexes, Views, Synonyms, Sequence
+
+# Data Types:  Char, Varchar2, Number, Long, Datetime
+
+Char => Fixed length character data
+Varchar => Variable length character data  
+number => Variable length numeric data
+Date =>Date & time values
+Long => Variable length character data (2 GB)
+
+Normalization
+-------------------
+sqlplus / as sysdba
+
+sqlplus
+
+system
+password
+
+alter user hr identified by hr account unlock
+
+Data Science lifecycle
+------------------------------
+
+Data Engineering --> Collect, store, manage & process the data [rdbms, cloud, hadoop]
+
+Data Analysis --> Analyse data and derive insights (R, Pandas, Excel, SAS, pyspark, sql, hive)
+
+Data Visualisation --> Prepare reports, charts, presentations, dashboards (Tableau, Qlikview, PowerBI, Cognos)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

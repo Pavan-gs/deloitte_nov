@@ -1,0 +1,49 @@
+Git --> Desktop based appln
+Git hub --> Version Control System
+
+Centralised VCS --> It's connected to the network, if the application crashes, entire data is lost.
+
+Distributed VCS --> Local copy is always available, internet connection is not needed always, committing changes ccan be done locally inyour local hard drive, review it and push it into the central server.
+
+Fork --> Copying others repository
+Branch --> Copy of files into a branch
+Pull request --> Implementing changes from a branch or another repository
+
+Download zip / git  clone "repository ssh/html"--> To download the repository into your local
+
+git init  /  right click in  the folder--> To initialise a empty git repository locally
+
+git add  <file name>  --> To add the file
+git commit -m "message" --> To save the file
+git status --> To see the status of saved/unsaved and untracked files
+
+git remote add origin "https://remote repository url"
+git pull origin main
+git push origin master
+
+git tag <tag_name> --> Create a tag
+git tag --> To display the tags
+git show <tag_name> --> Display the content of the tagged file
+git log  -n --> To show the limited number of commits
+git log --oneline --> To have a highlevel overview of a project
+
+Flatfiles
+----------
+1. Linear search
+2. Data redundancy
+3. No concurrent access
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
