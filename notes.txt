@@ -1,37 +1,335 @@
-Git --> Desktop based appln
-Git hub --> Version Control System
+OLTP --> DB (row wise transactions)
+OLAP --> Data Warehouse
+Nosql --> 
 
-Centralised VCS --> It's connected to the network, if the application crashes, entire data is lost.
+1990's --> www, personal computers
+ yahoo
+ebay, fb, google
 
-Distributed VCS --> Local copy is always available, internet connection is not needed always, committing changes ccan be done locally inyour local hard drive, review it and push it into the central server.
+Digital era
+--------------
 
-Fork --> Copying others repository
-Branch --> Copy of files into a branch
-Pull request --> Implementing changes from a branch or another repository
+Challenges
+---------------
+Volume --> Cost of storage
 
-Download zip / git  clone "repository ssh/html"--> To download the repository into your local
+Velocity --> Speed of data generation
 
-git init  /  right click in  the folder--> To initialise a empty git repository locally
+Variety --> Unstructured
 
-git add  <file name>  --> To add the file
-git commit -m "message" --> To save the file
-git status --> To see the status of saved/unsaved and untracked files
+Data Science Lifecycle
+-------------------------------
+Data Engineering --> Data collection, storage, management & processing [RDBMS, Cloud, Big Data]
 
-git remote add origin "https://remote repository url"
-git pull origin main
-git push origin master
+Data Analytics  --> maths, stats, domain expertise [R, Python, Excel, SAS, SQL, Hive] 
 
-git tag <tag_name> --> Create a tag
-git tag --> To display the tags
-git show <tag_name> --> Display the content of the tagged file
-git log  -n --> To show the limited number of commits
-git log --oneline --> To have a highlevel overview of a project
+	1. Descriptive analytics
 
-Flatfiles
-----------
-1. Linear search
-2. Data redundancy
-3. No concurrent access
+	2. Diagnostic analytics
+
+	3. predictive analytics
+
+	4. prescriptive analytics
+
+Data  Visualization (BI)  --> Reports, presentations, dashboards (Power BI, Tableau, Qlikview, Lookr, Cognos)
+
+Advanced Analytics ---> ML, DL
+
+Solution development
+
+Hadoop
+-----------
+
+Apache
+Cloudera
+Hortonworks
+MapR
+Big Insights
+HD insights
+
+Core components
+-------------------------
+
+HDFS --> Hadoop Distributed File System --> Storage layer 
+
+Mapreduce (YARN) --> Yet Another Resource Negotiator --> Processing layer 
+
+Hadoop --> Opensource, cheap commodity hardware
+
+
+Pig --> Adhoc query language (Pig latin), data flow language , Load, Transform(generate, filter, describe, avg) & dump/store (Invented by Yahoo!)
+
+Hive --> Data Warehousing like solution, HQL (FB)
+
+Squoop --> Connecting with other db's
+
+Flume --> Data integration from web
+
+Oozie --> Work Scheduler
+
+Zoo keeper --> Job Co-ordinator
+
+Mahout --> ML library (Java)
+
+HBASE --> No sql db (columnar)
+
+Hadoop Clusters  ---> Hadoop programs running in multiple machines/servers/nodes
+----------------------
+Each hadoop server is capable of managing 10 TB data for ex
+300*10 --> 3 PB --> 3000 TB
+
+Modes  of cluster configuration --> Standalone, Pseudo distributed[Configured to run on single server], Fully Distributed mode[Configured to run on multiple server]
+
+Characterstics
+-------------------
+Cost effective, Flexible, Scalable, Fault tolerant
+
+Hadoop Vendors --> Apache, Cloudera, Hortonworks, MapR, MS HD Insights, IBM Big Insights
+
+HDFS Architecture
+-------------------------
+
+Master --> Name node --> Maintains & manages the blocks which are present in the data nodes
+It keeps track of entire data/ directory structure and also the placement of the blocks
+
+Slave Machines --> Data nodes --> Data is stored & processed here. Responsible for serving the read/write requests
+
+File storage
+----------------
+Files are split into physical blocks of 128 mb and further replicated 3 times by default and stored in the data nodes
+
+Replication factor can be set by the Hadoop Admin
+
+Hadoop 1 --> 64 mb
+Hadoop 2 -->128 mb
+
+280 mb file
+
+The data is devided into blocks of 128 mb maximum and distributed across the data nodes in parallel.
+Replications are written in serial
+
+b1 --> 128 mb
+b2 --> 128 mb
+b3 --> 24 mb
+
+
+Name node
+----------------
+
+Stores the meta data  --> List of files, list of blocks & its replications for each file, list of data nodes for each blocks, file attributes, access_time, transaction_log etc.
+
+Rack Awareness --> Hadoop makes sure to store the replications in different data nodes/racks/servers.
+
+File Read/Write Anatomy
+----------------------------------
+
+When a read/write request is submitted --> Request is taken by the Client (Hadoop FS)
+Interface between Hadoop and the User
+hadoop fs  -put /source_path /destination_path
+
+1.  Client takes the request, splits the data into blocks of 128 mb  (maximum) and replications
+
+2. Client collects the list of data nodes details from the "Name node" to write the blocks and replications
+
+3. Blocks are written in parallel, replications are written in serial
+
+By default replication factor 3
+
+Limitations of Hadoop 1
+----------------------------------
+
+Secondary Name node --> Manual back up of the name node (Single point of failure)
+
+Single Name space --> Limited by the single ram space (Name node)
+
+Hadoop 2
+-------------
+
+High Availability --> Active & Standby name node (Auto back-up)
+
+Federation --> Multiple name nodes
+
+/HR --> Name node1
+/Sales --> Name node2
+/Marketing --> Name node3
+
+Commands
+---------------
+ls --> To list the files and directories
+mkdir --> To create directory
+cd --> To change the directory
+gedit / vi --> i (insert), right click for paste, (esc+:wq) for quit
+cat --> To view the file
+
+Hadoop commands
+---------------------------
+
+Sudop jps --> To check the currently running daemons
+
+HDFS  --> start-dfs.sh --> To start HDFS daemons
+Mapreduce  --> start-yarn.sh --> To start mapreduce daemons
+start-all.sh --> To start all the hadoop daemons
+stop-all.sh --> To stop all the hadoop daemons
+localhost/50070 --> To browse the hadoop file system
+
+hadoop fs  -ls /
+
+hadoop fs  -put /source_path /destination_path 
+
+hadoop fs -put  test.txt /Pavan/new_test.txt
+hadoop fs  -get /source_path /destination_path
+
+Mapreduce2 / YARN [Yet Another Resource Negotiator]  --> Parallel processing framework
+-------------------------------------------------------------------------
+
+MR1 --> Job Tracker --> Master --> Burden (Managing cluster level resources, cpu/ram) scheduling of tasks, managing & monitoring every task
+
+Task Trackers --> Slaves --> Allocation of all the resources for all the tasks
+
+MR2
+------
+Resource manager (Master) --> Manages all the cluster level resources and scheduling of jobs
+
+Node manager (Slave) --> Manages allocation of the jobs, one present per data node
+
+Application master --> Present for each jobs, Negotiates with Resource Manager to schedule tasks
+
+MR program paradigm
+------------------------------
+
+240 mb file
+
+1b --> 128 mb
+2b --> 112 mb
+
+Split, distribute and manage  the data running in parallel with fault tolerance.
+
+Map class --> Implements the business logic --> Overrides the map method [select * from employees where sal>10k]
+
+Reduce class --> Aggregation logic --> Overrides the reducer method (count)
+
+Framework itself reads the data from the blocks and gives it to the mappers
+
+Input format class --> Responsible for reading the data from the blocks and giving it to the mappers & reducers
+
+Text input format class --> Text files
+Sequence file format --> Binary files
+XML input format class --> XML files
+
+/ * Word count program */
+
+1. Mapper Input 
+
+s = "Hi, we are in python class, python is awesome!"
+s.split(" ")
+for i in l:
+     print(i,1)
+
+hi,1
+we,1
+are,1
+python,1
+class,1
+python,1
+is,1
+awesome,1
+
+2. Combiner (Mini-reducer) --> (hi,1) (we,1) (are,1) (python,1,1) (class,1) (is,1) (awesome,1)
+
+3. Reducer Input --> Same as the mapper's output
+
+4. Reducer output --> Aggregation logic (take the sum of the values for each keys and pass it to the same reducer output)
+
+5  Partitioner --> Responsible for sending the output of the same key to the same output directory
+
+
+Map task --> Input splits --> Num_mappers
+
+Get data from input splits
+process
+produce the intermediate temporary output
+
+Reduce task --> (By default is 1)
+
+Reads from all the map tasks
+processs
+output is stored in the hdfs in blocks and replications
+
+Print the  names of employees getting more than 10k salary? --> No aggregation is required and hence no reducer is needed
+
+Count the number of employees getting > 10k sal? --> reducer is needed to count(aggregation)
+
+Hadoop Streaming
+--------------------------
+Utility that comes along with the hadoop distribution which helps in running executable scripts of Python or R
+
+/usr/local/hadoop-2.9.1/share/hadoop/tools/lib
+
+chmod a+x / chmod 777 (give permission to your mapper file)
+
+chmod a+x mapper.py reducer.py
+
+#! --> Shabong --> To run a executable python script
+#!/usr/bin/python
+
+ hadoop jar /usr/local/hadoop-2.9.1/share/hadoop/tools/lib/hadoop-streaming-2.9.1.jar  -input /Pavan/myfile.txt -output /Pavan/wordcount2 -mapper /home/hduser/Pavan/mapper1.py  -reducer /home/hduser/Pavan/reducer1.py
+
+1. Make sure the #! "Excutable script path is given"
+2. verify the python syntax
+3. Give permission to mapper & reducer file
+4. Ensure the path of the hadoop streaming jar, input & output files, mapper & reducer files.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
