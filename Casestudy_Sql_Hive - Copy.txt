@@ -1,0 +1,36 @@
+HDFS questions
+---------------------
+
+Create a directory, and add a new text file in local
+Move the text file to HDFS and rename it
+Move the file from hdfs into different directory of local
+
+Hive questions
+--------------------
+
+Create table for storing transactional records --> 
+------------------------------------------------------------
+create table txnrecords(txnno INT, txndate STRING, custno INT, amount DOUBLE, 
+category STRING, product STRING, city STRING, state STRING, spendby STRING)
+row format delimited
+fields terminated by ','
+stored as textfile;
+
+1. Describe metadata or schema of the table
+
+2. Count no of records
+
+3. Count total spending by category of products
+
+4. Select 10 customers
+
+5. Create partitioned table
+
+6. Configure Hive to allow dynamic partitions
+
+7. Load data into partition table
+
+8. Find sales based on age group
+
+
+
